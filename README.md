@@ -1,0 +1,1 @@
+# kickstart.nvim_config_02
