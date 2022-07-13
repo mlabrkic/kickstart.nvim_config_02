@@ -37,6 +37,7 @@ https://github.com/mlabrkic/kickstart.nvim_config_02
 No_ 06:  'nvim-lualine/lualine.nvim'
 2022-07M-13
 
+
 ]]
 ------------------------------------------------------------
 -- https://github.com/wbthomason/packer.nvim#bootstrapping
