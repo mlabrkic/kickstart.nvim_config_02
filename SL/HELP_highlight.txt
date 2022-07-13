@@ -1,0 +1,86 @@
+:help statusline
+Statuslines in Vim are not hard to create.
+
+The option consists of printf style '%' items interspersed with normal text.
+Each status line item is of the form:
+%-0{minwid}.{maxwid}{item}
+
+Everything except the % and the item is optional.
+
+------------------------------------------------------------
+ HELP:
+h highlight
+
+------------------------------
+You can see all the groups currently active with this command: >
+:so $VIMRUNTIME/syntax/hitest.vim
+
+:colo[rscheme]	Output the name of the currently active color scheme.
+
+:hi[ghlight]		List all the current highlight groups that have attributes set.
+:hi[ghlight] clear	Reset all highlighting to the defaults.  Removes all highlighting for groups added by the user!
+
+:verbose hi Comment  " the listing will also tell where it was last set.
+
+------------------------------
+h highlight-args
+
+There are two types of UIs for highlighting:
+cterm	terminal UI (|TUI|)
+gui	GUI or RGB-capable TUI ('termguicolors')
+
+------------------------------
+1. TUI highlight arguments
+h highlight-cterm
+
+h ctermfg
+
+h ctermbg
+ctermbg={color-nr}				*highlight-ctermbg*
+
+h cterm-colors
+
+:highlight Normal ctermfg=grey ctermbg=darkblue
+:highlight Visual ctermfg=bg ctermbg=fg
+
+------------------------------
+2. GUI highlight arguments
+h highlight-gui
+
+h highlight-guifg
+guifg={color-name}					*highlight-guifg*
+:hi comment guifg='salmon pink'
+
+foreground (guifg), background (guibg)
+
+--------------
+h gui-colors
+You can also specify a color by its RGB (red, green, blue) values.
+The format is "#rrggbb", where
+	"rr"	is the Red value
+	"gg"	is the Green value
+	"bb"	is the Blue value
+
+All values are hexadecimal, range from "00" to "ff".  Examples: >
+:highlight Comment guifg=#11f0c3 guibg=#ff00ff
+
+--------------
+h highlight-groups
+
+These are the builtin highlighting groups.  
+Note that the highlighting depends on the value of 'background'.  
+You can see the current settings with the
+highlight" command.
+
+------------------------------
+h hl-StatusLine
+h hl-User1
+
+* -   Set highlight group to User{N}
+The number N must be between 1 and 9.
+Restore normal highlight with %* or %0*.
+
+set statusline+=%8*\ [%n]
+
+------------------------------------------------------------
+
