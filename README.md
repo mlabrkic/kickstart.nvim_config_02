@@ -24,15 +24,11 @@ https://github.com/neovim/neovim/projects  \
 ------------------------------------------------------------
 ## B:  How I got "kickstart.nvim_config_02"?
 
-https://github.com/mlabrkic/kickstart.nvim_config_01 
-
+https://github.com/mlabrkic/kickstart.nvim_config_01   \
 \+
-
 new (No_ 06 -  No_ 07)
 
-#### No_ 06:  Lualine Statusline
-
-Plugins:  'nvim-lualine/lualine.nvim'
+### No_ 06:  Lualine Statusline:  'nvim-lualine/lualine.nvim'
 ```lua
   -- statusline, mlabrkic:
 
@@ -79,7 +75,7 @@ Plugins:  'nvim-lualine/lualine.nvim'
 require('SL/lualine_nvim-navic')
 ```
 
-#### No_ 07:  Vimscript Statusline
+### No_ 07:  Vimscript Statusline
 ```lua
 -- 2) statusline:  vimscript
 
