@@ -26,77 +26,72 @@ https://github.com/neovim/neovim/projects  \
 
 https://github.com/mlabrkic/kickstart.nvim_config_01 
 
-+
+\+
 
 new (No_ 06 -  No_ 07)
 
-------------------------------
-#### No_ 06:  Plugins
+#### No_ 06:  Lualine Statusline
 
-Plugins:  'numToStr/Comment.nvim', 'nvim-lualine/lualine.nvim'
-
+Plugins:  'nvim-lualine/lualine.nvim'
 ```lua
-  -- use 'numToStr/Comment.nvim' -- "gc" to comment visual regions/lines ("gcc" to comment one line)
-  -- When you call setup() method, "Comment.nvim" sets up some basic mapping (default).
-  use {
-      'numToStr/Comment.nvim',
-      config = function()
-          require('Comment').setup{}  -- mlabrkic: () --> {}
-      end
-  }
-```
+  -- statusline, mlabrkic:
 
-```lua
-  ----------------------------
-  -- https://github.com/nvim-lualine/lualine.nvim
-  -- use 'nvim-lualine/lualine.nvim' -- Fancier statusline
+  -- use 'nvim-lualine/lualine.nvim'                                              -- Fancier statusline
 
-  -- mlabrkic
+  -- https://github.com/nvim-lualine/lualine.nvim#packernvim
+  -- You'll also need to have a patched font if you want icons.
   use {
     'nvim-lualine/lualine.nvim',
     requires = { 'kyazdani42/nvim-web-devicons', opt = true }
   }
 
+------------------------------
   -- https://github.com/SmiteshP/nvim-gps
+  -- ⚠️ Deprecated! Use nvim-navic instead of this plugin
+
+  -- https://github.com/SmiteshP/nvim-navic
   -- Simple statusline component that shows what scope you are working inside
+  -- ... but uses LSP instead of Treesitter.
   use {
-    "SmiteshP/nvim-gps",
-    requires = "nvim-treesitter/nvim-treesitter",
-    config = function()
-      require("nvim-gps").setup()
-    end,
+      "SmiteshP/nvim-navic",
+      requires = "neovim/nvim-lspconfig"
   }
 
+------------------------------
   -- use 'arkav/lualine-lsp-progress'
-
   -- Choose  'j-hui/fidget.nvim' instead of 'arkav/lualine-lsp-progress'
 
   -- Standalone UI for nvim-lsp progress
   -- After the plugin is loaded (e.g., after plug#end() for vim-plug),
   -- call its setup function (in Lua):  require('fidget').setup{}
-  -- use {
-  --   'j-hui/fidget.nvim',
-  --   config = function()
-  --     require('fidget').setup{}
-  --   end
-  -- }
-
-  ----------------------------
+  use {
+    'j-hui/fidget.nvim',
+    config = function()
+      require('fidget').setup{}
+    end
+  }
 ```
 
 ```lua
--- require('config/lualine')
-require('config/lualine_gps')
+-- 1) statusline:  lualine
 
--- require('config/lualine_eviline')
--- require('config/lualine_gps_eviline')
+-- require('SL/lualine')
+require('SL/lualine_nvim-navic')
 ```
 
-------------------------------
-#### No_ 07:  aaa
+#### No_ 07:  Vimscript Statusline
 ```lua
+-- 2) statusline:  vimscript
 
+-- :h variable-scope
+
+-- vim.cmd [[
+--   augroup AU_statusline
+--     autocmd!
+--     " let g:path_to_source = stdpath("config") . "\\" . "SL\\statusline_ternary.vim"
+--     let g:path_to_source = stdpath("config") . "\\" . "SL\\statusline.vim"
+--     autocmd VimEnter * execute "source" g:path_to_source
+--   augroup end
+-- ]]
 ```
-
-------------------------------
 
