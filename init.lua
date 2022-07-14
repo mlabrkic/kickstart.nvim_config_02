@@ -1,6 +1,6 @@
 --[[
 
-2022-07M-13
+2022-07M-14
 ------------------------------------------------------------
 https://github.com/nanotee/nvim-lua-guide
 
@@ -17,6 +17,7 @@ https://github.com/nvim-lua/kickstart.nvim
 mjlbach
 2022-07M-04
 tjdevries "init: kickstart.nvim" 10 days ago
+Disable telemetry for sumneko lua lsp 2 days ago
 
 ------------------------------------------------------------
 3) mlabrkic - My Neovim config (based on kickstart.nvim):
@@ -25,7 +26,7 @@ I edited init.lua from "kickstart.nvim" (No_ 01 - No_ 06)
 
 ------------------------------
 https://github.com/mlabrkic/kickstart.nvim_config_01
-2022-07M-11
+2022-07M-14
 No_ 01:  Plugins: 'sainnhe/gruvbox-material', 'hrsh7th/nvim-cmp'
 No_ 02:  OPTIONS
 No_ 03:  telescope-fzf-native --> Windows with MinGW
@@ -34,9 +35,9 @@ No_ 05:  sumneko/lua-language-server
 
 ------------------------------
 https://github.com/mlabrkic/kickstart.nvim_config_02
+2022-07M-14
 No_ 06:  'nvim-lualine/lualine.nvim'
-2022-07M-13
-
+No_ 07:  'Vimscript Statusline'
 
 ]]
 ------------------------------------------------------------
@@ -407,12 +408,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 
 --[[
 :h variable-scope
-
 There are several name spaces for variables.
-|global-variable|    g:	  Global.
-|script-variable|    s:	  Local to a |:source|'ed Vim script.
-|vim-variable|       v:	  Global, predefined by Vim.
-]]
 
 -- vim.cmd [[
 --   augroup AU_statusline
@@ -428,6 +424,7 @@ There are several name spaces for variables.
 
 -- require('SL/lualine')
 require('SL/lualine_nvim-navic')
+
 
 ------------------------ Lualine ---------------------------
 --[[
@@ -683,7 +680,7 @@ table.insert(runtime_path, 'lua/?.lua')
 table.insert(runtime_path, 'lua/?/init.lua')
 
 require('lspconfig').sumneko_lua.setup {
-  cmd = {'C:/UTILS/PORT/Neovim_LSP/sumneko_lua/bin/lua-language-server'}, -- mlabrkic
+  cmd = {'C:/UTILS/Neovim_LSP/sumneko_lua/bin/lua-language-server'}, -- mlabrkic
   on_attach = on_attach,
   capabilities = capabilities,
   settings = {
@@ -698,6 +695,8 @@ require('lspconfig').sumneko_lua.setup {
         globals = { 'vim' },
       },
       workspace = { library = vim.api.nvim_get_runtime_file('', true) },
+      -- Do not send telemetry data containing a randomized but unique identifier
+      telemetry = { enable = false, },
     },
   },
 }
