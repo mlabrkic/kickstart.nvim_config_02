@@ -147,10 +147,8 @@ set statusline+=\ %{Get_current_mode_text()}
 " ------------------------------
 " Restore normal highlight with %* or %0*.
 set statusline+=\ %*
-" set statusline+=%#Statusline#\
+" set statusline+=\ %#Statusline#
 
-" ------------------------------
-"  right
 set statusline+=%#Pmenu#               " colour
 set statusline+=\Buf:%n        " Buffer number
 set statusline+=\ Col:%-c      " column 
@@ -165,7 +163,10 @@ set statusline+=%{%v:lua.require'nvim-navic'.get_location()%}
 set statusline+=%m           " Modified flag, text is "[+]"; "[-]" if 'modifiable' is off.
 set statusline+=%#Statusline#          " colour
 
+" ------------------------------
 set statusline+=%=           " =  Separation point between alignment sections.
+" ------------------------------
+"  right
 
 " set statusline+=\ %{v:register}  " which copy/paste buffer (register) is currently active
 set statusline+=\ %r         " Readonly flag, text is "[RO]".
